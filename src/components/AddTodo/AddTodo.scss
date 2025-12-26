@@ -82,8 +82,32 @@
       color: #e0e0e0;
 
       &:hover:not(:disabled) {
-        background-color: #4d4d4d;
+        background-color: var(--color-light);
+        color: #000;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__form {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &__input {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__form {
+      margin-bottom: 20px;
+    }
+
+    &__input {
+      font-size: 14px;
+      padding-left: 8px;
     }
   }
 }

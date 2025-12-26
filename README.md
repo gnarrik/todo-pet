@@ -1,73 +1,276 @@
-# React + TypeScript + Vite
+# To Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное веб-приложение для управления задачами, построенное на React и TypeScript. Приложение позволяет создавать, редактировать, удалять и отслеживать выполнение задач с сохранением данных в локальном хранилище браузера.
 
-Currently, two official plugins are available:
+## 🚀 Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ **Добавление задач** - создание новых задач с уникальным ID
+- ✏️ **Редактирование задач** - inline-редактирование с поддержкой клавиатуры (Enter для сохранения, Escape для отмены)
+- 🗑️ **Удаление задач** - удаление отдельных задач или всех задач сразу
+- ☑️ **Отметка выполнения** - переключение статуса задачи (выполнена/не выполнена)
+- 📊 **Сортировка** - сортировка задач по дате создания (Newest/Oldest)
+- 🌓 **Темная/светлая тема** - переключение между темами с сохранением выбора
+- 💾 **Автосохранение** - все данные автоматически сохраняются в LocalStorage
+- 📱 **Адаптивный дизайн** - современный и отзывчивый интерфейс
+- ⚡ **Оптимизация производительности** - использование мемоизации и кастомных хуков
 
-## React Compiler
+## 🛠️ Технологический стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19.2.0** - библиотека для построения пользовательского интерфейса
+- **TypeScript 5.9.3** - типизированный JavaScript для повышения надежности кода
+- **Vite 7.2.4** - быстрый сборщик и dev-сервер
+- **SCSS** - препроцессор CSS для стилизации
+- **Material-UI 7.3.6** - компонент Switch для переключения темы
+- **LocalStorage API** - хранение данных в браузере
+- **SVGR** - импорт SVG как React компонентов
 
-## Expanding the ESLint configuration
+## 📦 Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Клонируйте репозиторий:
+```bash
+git clone <repository-url>
+cd todo-pet
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Установите зависимости:
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🏃 Запуск проекта
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Режим разработки
+```bash
+npm run dev
+```
+Приложение будет доступно по адресу `http://localhost:5173`
+
+### Сборка для продакшена
+```bash
+npm run build
+```
+Собранные файлы будут находиться в папке `dist`
+
+### Превью продакшен-сборки
+```bash
+npm run preview
+```
+
+### Линтинг
+```bash
+npm run lint
+```
+
+## 📁 Структура проекта
+
+```
+todo-pet/
+├── src/
+│   ├── components/          # React компоненты
+│   │   ├── AddTodo/         # Компонент добавления задачи
+│   │   ├── EditTodo/        # Компонент редактирования задачи
+│   │   ├── Todo/            # Главный компонент приложения
+│   │   │   └── CustomSwitch/# Кастомный переключатель темы
+│   │   ├── TodoItem/        # Компонент отдельной задачи
+│   │   └── TodoList/        # Компонент списка задач
+│   ├── assets/              # Статические ресурсы
+│   │   ├── fonts/           # Шрифты (Ubuntu)
+│   │   └── icons/           # SVG иконки
+│   ├── styles/              # Глобальные стили
+│   │   ├── globals.scss     # Глобальные стили
+│   │   ├── normalize.scss   # Нормализация стилей
+│   │   ├── variables.scss   # CSS переменные
+│   │   └── fonts.scss       # Подключение шрифтов
+│   ├── types/               # TypeScript типы
+│   │   └── Task.ts          # Тип задачи
+│   ├── utils/               # Утилиты
+│   │   ├── localstorage.ts  # Хуки для работы с LocalStorage
+│   │   └── useTasks.ts      # Кастомный хук для управления задачами
+│   ├── App.tsx              # Корневой компонент
+│   └── main.tsx             # Точка входа
+├── public/                  # Публичные файлы
+├── index.html               # HTML шаблон
+├── package.json             # Зависимости проекта
+├── tsconfig.json            # Конфигурация TypeScript
+├── vite.config.ts           # Конфигурация Vite
+└── eslint.config.js         # Конфигурация ESLint
+```
+
+## 🎯 Основные компоненты
+
+### Todo
+Главный компонент приложения, который использует кастомный хук `useTasks` для управления состоянием. Отвечает за:
+- Отображение интерфейса приложения
+- Передачу пропсов дочерним компонентам
+- Управление темой оформления
+
+### TodoItem
+Компонент отдельной задачи с функциями:
+- Отображение задачи с чекбоксом
+- Переключение статуса выполнения
+- Inline-редактирование с автоматическим фокусом
+- Удаление задачи
+- Обработка клика вне области редактирования для отмены
+
+### AddTodo
+Форма для добавления новых задач:
+- Валидация пустых значений
+- Автоматический фокус после добавления
+- Отправка формы по Enter
+
+### TodoList
+Компонент-контейнер для отображения списка задач:
+- Мемоизирован для оптимизации производительности
+- Рендерит массив задач через `map`
+
+### CustomSwitch
+Кастомный переключатель темы на основе Material-UI Switch:
+- Стилизован с использованием `styled` компонентов
+- Поддержка темной и светлой темы
+- Мемоизирован для оптимизации
+
+## 🔧 Кастомные хуки
+
+### `useTasks`
+Главный хук приложения, инкапсулирующий всю бизнес-логику:
+- Управление списком задач
+- Управление темой
+- Сортировка задач
+- Все CRUD операции с задачами
+- Возвращает объект с состоянием и методами
+
+**Возвращаемые значения:**
+```typescript
+{
+  theme: "Light" | "Dark",
+  sortedTasks: Task[],
+  toggleTheme: () => void,
+  newTaskTitle: string,
+  setNewTaskTitle: (value: string) => void,
+  inputRef: RefObject<HTMLInputElement>,
+  sortBy: "Newest" | "Oldest",
+  setSortBy: (value: "Newest" | "Oldest") => void,
+  addTask: () => void,
+  completeEditTask: (title: string, id: string) => void,
+  toggleTaskComplete: (id: string, isDone: boolean) => void,
+  deleteTask: (id: string) => void,
+  deleteAllTasks: () => void,
+}
+```
+
+### `useTasksWithStorage`
+Хук для управления задачами с автоматическим сохранением в LocalStorage:
+- Загружает задачи из LocalStorage при инициализации
+- Автоматически сохраняет изменения в LocalStorage
+- Возвращает кортеж `[tasks, setTasks]` (аналогично `useState`)
+- Использует дефолтные задачи при первом запуске
+
+### `useThemeFromStorage`
+Хук для управления темой с сохранением в LocalStorage:
+- Загружает тему из LocalStorage при инициализации
+- Автоматически сохраняет изменения темы
+- Возвращает кортеж `[theme, setTheme]` (аналогично `useState`)
+- По умолчанию устанавливает светлую тему
+
+## 📝 Типы данных
+
+### Task
+```typescript
+type Task = {
+  id: string,           // Уникальный идентификатор (crypto.randomUUID())
+  title: string,        // Текст задачи
+  isDone: boolean,      // Статус выполнения
+  createdAt: Date,      // Дата создания
+}
+```
+
+## 🎨 Темы
+
+Приложение поддерживает две темы:
+- **Light** - светлая тема (по умолчанию)
+- **Dark** - темная тема
+
+Тема сохраняется в LocalStorage и восстанавливается при следующем посещении. Применяется через атрибут `data-theme` на элементах DOM.
+
+## 💾 Хранение данных
+
+Все данные хранятся в LocalStorage браузера:
+- **Ключ `tasks`** - массив задач в формате JSON
+- **Ключ `theme`** - текущая тема ("Light" или "Dark")
+
+При первом запуске приложения загружаются дефолтные задачи:
+- "Погладить кота" (выполнена)
+- "Погладить собаку" (не выполнена)
+
+## ⌨️ Горячие клавиши
+
+При редактировании задачи:
+- **Enter** - сохранить изменения
+- **Escape** - отменить редактирование
+
+При добавлении задачи:
+- **Enter** - добавить задачу (при отправке формы)
+
+## ⚡ Оптимизация производительности
+
+Приложение использует следующие техники оптимизации:
+
+1. **Мемоизация компонентов** - `memo()` для `TodoList`, `TodoItem`, `AddTodo`, `CustomSwitch`
+2. **Мемоизация вычислений** - `useMemo()` для `sortedTasks`
+3. **Мемоизация функций** - `useCallback()` для всех обработчиков событий
+4. **Кастомные хуки** - инкапсуляция логики для переиспользования
+5. **Ленивая инициализация** - использование функций в `useState(() => ...)`
+
+## 🚀 Развертывание
+
+После сборки проекта (`npm run build`), файлы из папки `dist` можно развернуть на любом статическом хостинге:
+
+- **Vercel** - автоматическое развертывание из Git
+- **Netlify** - drag & drop или Git интеграция
+- **GitHub Pages** - бесплатный хостинг для статических сайтов
+- **AWS S3 + CloudFront** - масштабируемое решение
+- **Любой другой статический хостинг**
+
+### Пример развертывания на Vercel:
+```bash
+npm install -g vercel
+vercel
+```
+
+## 🧪 Разработка
+
+### Основные практики React:
+- Функциональные компоненты с хуками
+- Мемоизация компонентов (`memo`)
+- Оптимизация с `useMemo` и `useCallback`
+- TypeScript для типобезопасности
+- SCSS модули для стилизации
+- Кастомные хуки для переиспользования логики
+
+### Структура стилей:
+- Использование SCSS переменных
+- БЭМ-методология для именования классов
+- Поддержка тем через атрибут `data-theme`
+- Адаптивный дизайн
+
+## 📄 Лицензия
+
+Проект создан в образовательных целях.
+
+## 👨‍💻 Разработка
+
+Для начала разработки:
+
+1. Установите зависимости: `npm install`
+2. Запустите dev-сервер: `npm run dev`
+3. Откройте браузер: `http://localhost:5173`
+
+Для проверки кода:
+```bash
+npm run lint
+```
+
+Для сборки:
+```bash
+npm run build
 ```

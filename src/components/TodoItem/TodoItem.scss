@@ -1,0 +1,143 @@
+.todo-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 490px;
+	height: 55px;
+	min-height: 55px;
+	
+	background-color: var(--color-blue-1);
+	border-radius: 5px;
+	margin-block: 10px;
+	transition: height var(--transition-duration),
+				min-height var(--transition-duration),
+				padding var(--transition-duration);
+
+	&[data-editing="true"] {
+		height: auto;
+		min-height: 70px;
+		padding: 12px 0;
+	}
+
+	&__input {
+		border: none;
+		background-color: transparent;
+		width: 100%;
+	}
+
+	&__label {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+
+		&:has(.todo-item__checkbox:checked) {
+			color: var(--color-gray-2);
+			text-decoration: line-through;
+		}
+	}
+
+	&__checkbox {
+		height: 30px;
+		width: 30px;
+		margin-inline: 16px;
+		border: 1px solid var(--color-blue-2);
+		background-color: var(--color-blue-1);
+		appearance: none;
+		-webkit-appearance: none;
+		border-radius: 3px;
+		cursor: pointer;
+		position: relative;
+
+		&:checked {
+			background-color: var(--color-blue-2);
+
+			&::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 45%;
+				width: 6px;
+				height: 12px;
+				border: solid white;
+				border-width: 0 2px 2px 0;
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+		}
+	}
+
+	&__edit-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		aspect-ratio: 1;
+		background-color: transparent;
+		border-radius: 5px;
+		border: none;
+
+		&:hover {
+			background-color: var(--color-blue-2);
+			color: white;
+		}
+	}
+
+	&__delete-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		aspect-ratio: 1;
+		background-color: transparent;
+		border-radius: 5px;
+		border: none;
+
+		&:hover {
+			background-color: var(--color-blue-2);
+			color: white;
+		}
+	}
+
+	&__buttons-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 55px;
+		align-self: flex-start;
+		flex-shrink: 0;
+	}
+
+	.todo[data-theme="dark"] & {
+		background-color: #3d3d3d;
+		color: #e0e0e0;
+
+		&__label {
+			color: #e0e0e0;
+
+			&:has(.todo-item__checkbox:checked) {
+				color: #a0a0a0;
+			}
+		}
+
+		&__checkbox {
+			border-color: #5d5d5d;
+			background-color: #3d3d3d;
+
+			&:checked {
+				background-color: #5d5d5d;
+			}
+		}
+
+		&__edit-button,
+		&__delete-button {
+			color: #e0e0e0;
+
+			&:hover {
+				background-color: #4d4d4d;
+			}
+		}
+	}
+}

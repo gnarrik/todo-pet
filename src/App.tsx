@@ -1,9 +1,10 @@
-import TodoList from "./components/TodoList";
+import './styles'
+import Todo from "./components/Todo";
 
 function App() {
 
   return (
-    <TodoList />
+    <Todo />
   )
 }
 
